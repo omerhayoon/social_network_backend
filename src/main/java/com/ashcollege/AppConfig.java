@@ -12,13 +12,13 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import javax.sql.DataSource;
 import java.util.Properties;
 
+import static com.ashcollege.utils.Constants.DB_PASSWORD;
+import static com.ashcollege.utils.Constants.DB_USERNAME;
+
 
 @Configuration
 @Profile("production")
 public class AppConfig {
-
-    public static final String DB_USERNAME = "root";
-    public static final String DB_PASSWORD = "1234";
 
 
     @Bean

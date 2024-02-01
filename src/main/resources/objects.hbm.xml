@@ -5,13 +5,13 @@
 
 
 <!--example-->
-<!--    <class name="com.ashcollege.entities.Client" table="clients" lazy="false">-->
-<!--        <id name="id" type="int" column="id">-->
-<!--            <generator class="native"/>-->
-<!--        </id>-->
-<!--        <property name="firstName" type="string" column="first_name"/>-->
-<!--        <property name="lastName" type="string" column="last_name"/>-->
-<!--    </class>-->
+    <class name="com.ashcollege.entities.Client" table="clients" lazy="false">
+        <id name="id" type="int" column="id">
+            <generator class="native"/>
+        </id>
+        <property name="firstName" type="string" column="first_name"/>
+        <property name="lastName" type="string" column="last_name"/>
+    </class>
 
 <!--    example2-->
 <!--    <many-to-one name="object" column="object_id"-->
