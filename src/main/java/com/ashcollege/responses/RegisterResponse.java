@@ -9,8 +9,7 @@ public class RegisterResponse extends BasicResponse{
         this.id = id;
     }
 
-    public RegisterResponse(boolean success, Integer errorCode, Integer id) {
+    public RegisterResponse(boolean success, Integer errorCode) {
         super(success, errorCode);
-        this.id = id;
     }
 }

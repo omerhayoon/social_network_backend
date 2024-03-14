@@ -13,39 +13,39 @@ import java.util.List;
 
 @Component
 public class DbUtils {//         חיבור ל   mysql      database
-    private Connection connection = null;
+    private Connection connection;
     private User user;
 
 
-//    @PostConstruct// מיד שהאובייקט נוצר אז הפונקציה תפעל
-//    public Connection createConnection() {
-//        try {
-//            Class.forName("com.mysql.cj.jdbc.Driver");
-//            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/yt", "root", "Omeriko#1");
-//            System.out.println("ok");
-//        } catch (ClassNotFoundException e) {
-//            throw new RuntimeException(e);
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return connection;
-//    }
+    @PostConstruct// מיד שהאובייקט נוצר אז הפונקציה תפעל
+    public Connection createConnection() {
+        try {
+            Class.forName("com.mysql.cj.jdbc.Driver");
+            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/social_network_users", "root", "Omeriko#1");
+            System.out.println("ok");
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return connection;
+    }
 
-//    public boolean registerUser(User user) {// הכנסת ערכים לתוך שאילתה ב sql
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("INSERT into useres(username, password)VALUE( ?, ?)");
-//            preparedStatement.setString(1, user.getUsername());
-//            preparedStatement.setString(2, user.getPassword());
-//            preparedStatement.executeUpdate();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//        return true;
-//    }
+    public boolean registerUser(User user) {// הכנסת ערכים לתוך שאילתה ב sql
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT into test1(name, password)VALUE( ?, ?)");
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getPassword());
+            preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return true;
+    }
 
 //    public boolean signIn(String username, String password) {
 //        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  useres.Username FROM useres WHERE Username=? AND Password=?");
+//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  test1.Username FROM useres WHERE Username=? AND Password=?");
 //            preparedStatement.setString(1, username);
 //            preparedStatement.setString(2, password);
 //            ResultSet resultSet = preparedStatement.executeQuery();
@@ -54,16 +54,16 @@ public class DbUtils {//         חיבור ל   mysql      database
 //            throw new RuntimeException(e);
 //        }
 //    }
-//    public boolean freeUsername(String username) {
-//        try {
-//            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  useres.Username FROM useres WHERE Username=?");
-//            preparedStatement.setString(1, username);
-//            ResultSet resultSet = preparedStatement.executeQuery();
-//            return !resultSet.next();
-//        } catch (SQLException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
+    public boolean availableUsername(String username) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement("SELECT  test1.name FROM test1 WHERE Username=?");
+            preparedStatement.setString(1, username);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            return !resultSet.next();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 //    public List<User> getAllUsers(){
 //        List<User>allUsers=new ArrayList<>();
 //       try{
